@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.vertx:vertx-codegen:3.3.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.vertx/vertx-codegen/3.3.2/c6e0fc72777a9b924916dda67ca6a4ceee076645/vertx-codegen-3.3.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.vertx/vertx-codegen/3.3.2/18c76d48de4f5db3125d82efe20b630bf2f98383/vertx-codegen-3.3.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
