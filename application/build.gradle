@@ -16,7 +16,7 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3"
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M2'
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
     }
 }
@@ -63,8 +63,8 @@ dependencies {
     compile "com.auth0:auth0:0.4.0"
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.4"
     testCompile "org.apache.commons:commons-lang3:3.4"
-    testCompile "org.jetbrains.spek:spek-api:1.0.89"
-    testCompile "org.jetbrains.spek:spek-junit-platform-engine:1.0.89"
+    testCompile "org.jetbrains.spek:spek-api:1.1.5"
+    testCompile "org.jetbrains.spek:spek-junit-platform-engine:1.1.5"
     testCompile "com.winterbe:expekt:0.4.0"
     testCompile "org.awaitility:awaitility:2.0.0"
     testCompile "com.nhaarman:mockito-kotlin:0.9.0"

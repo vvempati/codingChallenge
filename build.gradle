@@ -11,7 +11,7 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.github.jengelman.gradle.plugins:shadow:1.2.3"
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M3'
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
     }
 }
 
@@ -51,7 +51,7 @@ project(':application') {
 
     jar {
         manifest {
-            attributes 'Main-Verticle': 'diamond.Application'
+            attributes 'Main-Verticle': 'filmData.Application'
         }
     }
 
@@ -72,14 +72,14 @@ project(':application') {
         compile "com.datastax.cassandra:cassandra-driver-core:3.1.1"
         compile "com.datastax.cassandra:cassandra-driver-mapping:3.1.1"
         compile "org.jdbi:jdbi:2.77"
-        testCompile "org.jetbrains.spek:spek-api:1.1.0-beta3"
-        testCompile "org.jetbrains.spek:spek-junit-platform-engine:1.1.0-beta3"
+        testCompile "org.jetbrains.spek:spek-api:1.1.5"
+        testCompile "org.jetbrains.spek:spek-junit-platform-engine:1.1.5"
         testCompile "org.apache.commons:commons-lang3:3.4"
         testCompile "com.winterbe:expekt:0.4.0"
         testCompile "org.awaitility:awaitility:2.0.0"
         testCompile "com.nhaarman:mockito-kotlin:0.9.0"
         testCompile "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.5"
-        testRuntime "org.junit.platform:junit-platform-launcher:1.0.0-M3"
+        testRuntime "org.junit.platform:junit-platform-launcher:1.0.0"
     }
 }
 
