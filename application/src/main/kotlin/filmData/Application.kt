@@ -31,8 +31,8 @@ class Application : AbstractVerticle(){
                 } }
                 )
 
-        router.route("/listAllFilms").handler(::listAll)
-        router.get("/view/:id").handler(::view)
+        router.route("/get").handler(::listAll)
+        router.get("/get/:id").handler(::view)
         router.route("/rate/:id").handler(BodyHandler.create())
         router.post("/rate/:id").handler(::rate)
     }
