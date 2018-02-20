@@ -5,6 +5,10 @@ Support for allowing a user to rate a specific film
 Include average rating for a film as one of its attributes
 Requests and responses should follow the JSON API specification
 
+In order to access this application, the user should be able to run ./gradlew build 
+in their terminal and then enter localhost:8081/view/id, localhost:8081/listAllFilms,
+or loclahost:8081/rate/id in their browser. 
+
 I created this application using Vert.x(a modular library that allows you to 
 easily build REST API's and dynamic applications) and Kotlin which is a Java
 based language. I chose to use Kotlin because I am very familiar with it and 
@@ -27,5 +31,4 @@ In order to satisfy the requirement of having average rating as an attribute
 I made it an attribute of the data class filmObject created in List.kt. 
 
 In order for a user to rate a specific film, I created a restful endpoint for 
-that as well using the film "id" as part of the uri. The id would have to be 
-defined in the database.
+that as well using the film "id" as part of the uri. 
