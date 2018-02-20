@@ -2,7 +2,7 @@ package filmData
 import filmData.list.*
 import io.vertx.core.AbstractVerticle
 import io.vertx.core.Future
-import io.vertx.core.eventbus.EventBus
+import io.vertx.ext.web.handler.*
 import io.vertx.core.json.Json
 import io.vertx.ext.web.Router
 import io.vertx.ext.web.RoutingContext
@@ -10,14 +10,14 @@ import io.vertx.ext.web.RoutingContext
  * Created by vvempati on 3/21/2017.
  */
 class Application : AbstractVerticle(){
-    val eventBus: EventBus by lazy { vertx.eventBus() }
+    //val eventBus: EventBus by lazy { vertx.eventBus() }
     override fun start(startFuture: Future<Void>) {
         val router:Router = Router.router(vertx)
         router.route("/").handler({routingContext->
             val response = routingContext.response()
             response
                     .putHeader("content-type", "text/html")
-                    .end("<h1>Hello from my first Vert.x 3 application</h1>")
+                    .end("<h1>Homepage</h1>")
         })
         vertx.createHttpServer().requestHandler{router.accept(it)}
                 .listen(
@@ -32,23 +32,26 @@ class Application : AbstractVerticle(){
                 )
 
         router.route("/listAllFilms").handler(::listAll)
-        router.route("/view/:id").handler(::view)
-        router.route("/rate/:id").handler(::rate)
+        router.get("/view/:id").handler(::view)
+        router.route("/rate/:id").handler(BodyHandler.create())
+        router.post("/rate/:id").handler(::rate)
     }
 
 }
 private fun rate(routingContext: RoutingContext){
     val request = routingContext.request()
-    val id:String = request.getParam("id")
     val json = routingContext.bodyAsJson
-    val rating = json.getJsonObject("Rating")
+    print("body as json  ${json}")
+    val id: String = request.getParam("id")
+    val ratingName:String = "Rating"
+    val rating:String = json.getString(ratingName)
     routingContext.response()
             .putHeader("content-type","application/json; charset=utf-8")
             .end(Json.encodePrettily(mapOf(
                     "message" to mapOf(
                             "success" to true
                     ),
-                    "rating" to filmData.list.rate(rating)
+                    "rating" to filmData.list.rate("1" ,rating)
             )))
 }
 private fun view(routingContext: RoutingContext){
