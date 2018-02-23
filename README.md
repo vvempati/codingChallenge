@@ -1,34 +1,14 @@
-The application should provide the following functionality:
-
-RESTful endpoints for retrieving a list of films or an individual film
-Support for allowing a user to rate a specific film
-Include average rating for a film as one of its attributes
-Requests and responses should follow the JSON API specification
-
-In order to access this application, the user should be able to run ./gradlew build 
-in their terminal and then enter localhost:8081/view/id, localhost:8081/listAllFilms,
-or loclahost:8081/rate/id in their browser. 
-
-I created this application using Vert.x(a modular library that allows you to 
-easily build REST API's and dynamic applications) and Kotlin which is a Java
-based language. I chose to use Kotlin because I am very familiar with it and 
-it's very concise and interoperable with Java.
-
-My gradle build file should download all the required dependencies(ex: SPEK 
-the testing tool that I used) but it would be simple if the user were to 
-have the gradle build tool or the IDE IntelliJ at their disposal. 
-
-A simple gradle test or gradle build will work to run the application. 
-
-I created RESTful endpoints for viewing the information related to a single 
-film and for viewing a list of films. I also mocked out the services for these
-functions since we aren't connecting the application to a database at this 
-point. I used the film "id" to identify the specific film. This id would have 
-be marked as a partition key when the information for the films is entered into
-the databse. 
- 
-In order to satisfy the requirement of having average rating as an attribute 
-I made it an attribute of the data class filmObject created in List.kt. 
-
-In order for a user to rate a specific film, I created a restful endpoint for 
-that as well using the film "id" as part of the uri. 
+An application to demonstrate the functionality of the following RESTful endpoints
+	1.localhost:8081/films
+		- lists all films and relevant metadata 
+	2.localhost:8081/films/:id
+		- lists a single film, given the id
+	3.localhost:8081/rating/:id
+		- retrieves rating of single film if available
+		- also retrieves films metadata 
+		- accepts rating of single film from user 
+How to access this application 
+	1. Run ./gradlew build in terminal in the location of the project repository
+	2. Copy & paste any of the URI's into browser
+How to run the tests for this application 
+	1. Run ./gradlew test in terminal in the location of the project repository 

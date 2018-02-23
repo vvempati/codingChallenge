@@ -31,10 +31,10 @@ class Application : AbstractVerticle(){
                 } }
                 )
 
-        router.route("/get").handler(::listAll)
-        router.get("/get/:id").handler(::view)
-        router.route("/rate/:id").handler(BodyHandler.create())
-        router.post("/rate/:id").handler(::rate)
+        router.route("/films").handler(::listAll)
+        router.get("/films/:id").handler(::view)
+        router.route("/rating/:id").handler(BodyHandler.create())
+        router.post("/rating/:id").handler(::rate)
     }
 
 }

@@ -52,7 +52,7 @@ class ApplicationTest : Spek ({
         describe("listAllFilms"){
             it("returns a list of all the films when queried"){
                 val tested = AtomicBoolean(false)
-                vertx.createHttpClient().getNow(8081, "localhost", "/get") { response ->
+                vertx.createHttpClient().getNow(8081, "localhost", "/films") { response ->
                     response.bodyHandler { buffer ->
                         val payload = JsonObject(buffer.toString("ISO-8859-1"))
                         val message = payload.getJsonObject("message")
@@ -68,7 +68,7 @@ class ApplicationTest : Spek ({
         describe("view"){
             it("displays the film information of the film that the user requests"){
                 val tested = AtomicBoolean(false)
-                vertx.createHttpClient().getNow(8081,"localhost","/get/1"){response ->
+                vertx.createHttpClient().getNow(8081,"localhost","/films/1"){response ->
                     response.bodyHandler { buffer->
                         val payload = JsonObject(buffer.toString("ISO-8859-1"))
                         val message = payload.getJsonObject("message")
@@ -82,7 +82,7 @@ class ApplicationTest : Spek ({
         xdescribe("rate"){
             it("displays the rating for a particular film that the user requests"){
                 val tested = AtomicBoolean(false)
-                val request = vertx.createHttpClient().post(8081,"localhost","/rate/1"){response ->
+                val request = vertx.createHttpClient().post(8081,"localhost","/rating/1"){response ->
                     response.statusCode().should.be.within(200,299)
                     tested.set(true)
                 }

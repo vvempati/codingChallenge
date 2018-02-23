@@ -147,9 +147,15 @@ fun rate(rating:String, id:String):filmObject{
         if(film.id == id.toInt())
         {
             //print("this is the id: ${film.id}")
-            //var initialRating = film.averageRating
-           // initialRating =  initialRating?.plus(rating.toInt())
-           film.averageRating = rating.toInt()
+            if(film.averageRating != null)
+            {
+                val intialRating = film.averageRating
+                film.averageRating =  intialRating?.plus(rating.toInt())
+            }
+            else
+            {
+                film.averageRating = rating.toInt()
+            }
            return film
 
         }
