@@ -1,6 +1,6 @@
 <p>An application to demonstrate the functionality of the following RESTful endpoints</p>
-       GET localhost:8081/films
-             lists all films and relevant metadata	
+      <pre><code> GET localhost:8081/films
+             lists all films and relevant metadata</code></pre>	
        GET localhost:8081/films/:id
                lists a single film, given the id	
        POST localhost:8081/rating/:id
