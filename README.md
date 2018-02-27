@@ -1,8 +1,10 @@
-An application to demonstrate the functionality of the following RESTful endpoints
-	1.GET localhost:8081/films
-		1.lists all films and relevant metadata 
-	2.GET localhost:8081/films/:id
+<p>An application to demonstrate the functionality of the following RESTful endpoints</p>
+	```1.GET localhost:8081/films
+			1.lists all films and relevant metadata
+	```
+	```2.GET localhost:8081/films/:id
 		2.lists a single film, given the id
+	````
 	3.POST localhost:8081/rating/:id
 		3. retrieves rating of single film if available
 		3. also retrieves films metadata 
