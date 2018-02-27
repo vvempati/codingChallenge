@@ -5,7 +5,7 @@
                retrieves a single film, given the id</code></pre>	
        <pre><code>POST localhost:8081/rating/:id
 	       creates rating of single film if available
-	       also retrieves films metadata</code></pre> 
+	       also retrieves film's metadata if available</code></pre> 
 <p>How to access this application </p>
     <pre><code>Run ./gradlew build in terminal in the location of the project repository
     Copy & paste any of the URI's into browser</code></pre>
