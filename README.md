@@ -1,6 +1,8 @@
 <p>An application to demonstrate the functionality of the following RESTful endpoints</p>
        ```GET localhost:8081/films
              lists all films and relevant metadata
+	```
+	```
 	   GET localhost:8081/films/:id
                lists a single film, given the id
 	```
@@ -12,7 +14,7 @@
 <p>How to access this application </p>
 ```
     Run ./gradlew build in terminal in the location of the project repository
-    2. Copy & paste any of the URI's into browser
+    Copy & paste any of the URI's into browser
 ```
 <p>How to run the tests for this application </p>
 ```
