@@ -2,21 +2,21 @@ package filmData.list
 
 import io.vertx.core.json.JsonArray
 import io.vertx.core.json.JsonObject
-import jdk.nashorn.internal.objects.NativeArray.forEach
-import java.util.*
-import kotlin.collections.List
 
 /**
- * Created by vvempati on 3/21/2017.
+ * Created by vasavivempati on 3/4/18.
  */
-data class filmObject(var id: Int,val title:String, val description:String,
-                      val url_slug:String, val year:Int, val related_film_ids:Any){
-    var averageRating:Int ? = null
-}
-data class ratings(var id: Int, val description: String)
-var allFilms:List<filmObject> = mutableListOf()
-var ratingsStore:MutableList<ratings> = mutableListOf()
-val jsonFilms = """
+class filmsStore {
+    data class filmObject(var id: Int, val title: String, val description: String,
+                          val url_slug: String, val year: Int, val related_film_ids: Any) {
+        var averageRating: Int? = null
+    }
+
+    data class ratings(var id: Int, val description: String)
+
+    var allFilms: List<filmObject> = mutableListOf()
+    var ratingsStore: MutableList<ratings> = mutableListOf()
+    val jsonFilms = """
 {
   "films": [
     {
@@ -102,64 +102,23 @@ val jsonFilms = """
   ]
 }
     """
-fun transformJSONObjectToPOJO( json: String ):List<filmObject>
-{
-    val jsonObject:JsonObject = JsonObject(json)
-    val JSONArray:JsonArray = jsonObject.getJsonArray("films")
-    var listOfFilmObjects:List<filmObject> = emptyList()
-    for(i in 0..(JSONArray.size() -1))
-    {
-        val film:JsonObject = JSONArray.getJsonObject(i)
-        val ids = film.getValue("related_film_ids")
-        val filmFromList:filmObject = filmObject(film.getInteger("id"),film.getString("title"),film.getString("description"),film.getString("url_slug"),
-                film.getInteger("year"),ids)
-        with(filmFromList)
-        {
-            this.averageRating = film.getInteger("averageRating")
-        }
-        listOfFilmObjects += filmFromList
-    }
-    allFilms = listOfFilmObjects
-    return listOfFilmObjects
-}
-fun view( filmID: String):filmObject{
-    //val film:Int = 3
-    val films = transformJSONObjectToPOJO(jsonFilms)
-    val emptyFilm:filmObject = filmObject(1,"empty","nothing","none",1,8)
-    for(film in films)
-    {
-        if(film.id == filmID.toInt())
-        {
-            return film
-        }
-    }
-    return emptyFilm
-    //return film // iterate through listOfFilmObjects and get the correct film
-}
-fun rate(rating:String, id:String):filmObject{
-    //val filmID = rating.getInteger("id")
-    //val review = rating.getString("rating")
-    //val rating:ratings = ratings(filmID,review)
-    val films = transformJSONObjectToPOJO(jsonFilms)
-    val emptyFilm:filmObject = filmObject(1,"empty","nothing","none",1,8)
-    for(film in films)
-    {
-        if(film.id == id.toInt())
-        {
-            //print("this is the id: ${film.id}")
-            if(film.averageRating != null)
+// create a film data store out of JSON Object
+    fun transformJSONObjectToPOJO(): List<filmObject> {
+        val jsonObject: JsonObject = JsonObject(jsonFilms)
+        val JSONArray: JsonArray = jsonObject.getJsonArray("films")
+        var listOfFilmObjects: List<filmObject> = emptyList()
+        for (i in 0..(JSONArray.size() - 1)) {
+            val film: JsonObject = JSONArray.getJsonObject(i)
+            val ids = film.getValue("related_film_ids")
+            val filmFromList: filmObject = filmObject(film.getInteger("id"), film.getString("title"), film.getString("description"), film.getString("url_slug"),
+                    film.getInteger("year"), ids)
+            with(filmFromList)
             {
-                val intialRating = film.averageRating
-                film.averageRating =  intialRating?.plus(rating.toInt())
+                this.averageRating = film.getInteger("averageRating")
             }
-            else
-            {
-                film.averageRating = rating.toInt()
-            }
-           return film
-
+            listOfFilmObjects += filmFromList
         }
+        allFilms = listOfFilmObjects
+        return listOfFilmObjects
     }
-
-    return emptyFilm
 }
